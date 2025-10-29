@@ -167,3 +167,5 @@ If pages are missing:
 ## Acknowledgements
 
 This tool relies on the Internet Archive's Wayback Machine. Please be respectful of their service by using reasonable rate limits.
+
+AI was used to generate this.
