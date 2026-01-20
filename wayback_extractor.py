@@ -240,7 +240,7 @@ def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, s
         "output": "json",
         "fl": "timestamp,original,mimetype,statuscode,digest,length",
         "collapse": "urlkey",  # Only one snapshot per URL
-        "filter": "statuscode:200",  # Only 200 responses
+        # No statuscode filter here; we'll pick best non-404 per URL later
     }
     
     # Generate domain variants
@@ -366,21 +366,30 @@ def normalize_url(url: str, ignore_query_params=False):
 
 
 def latest_per_original(records, cutoff_ts: str, path_prefix: str = None, include_nonhtml=False, ignore_query_params=False):
-    """Pick latest record <= cutoff for each 'original'.
-    We've already filtered for 200 status codes, so focus on path filtering."""
+    """Pick best record <= cutoff for each 'original', preferring latest non-404.
+    If the newest snapshot is a 404 but an older non-404 exists, keep the older non-404.
+    If only 404s exist, take the newest 404 so we still mirror something."""
+
+    def is_good(status: str) -> bool:
+        if not status:
+            return True
+        return not str(status).startswith("404")
+
     latest = {}
+
     for r in records:
         o = r.get("original", "")
         if not o:
             continue
+
         ts = r.get("timestamp", "")
         if not ts or ts > cutoff_ts:
             continue
-        
+
         # Skip robots.txt regardless of include_nonhtml flag
         if urlparse(o).path.endswith("/robots.txt"):
             continue
-            
+
         # Apply path prefix filter if specified
         if path_prefix:
             try:
@@ -388,20 +397,34 @@ def latest_per_original(records, cutoff_ts: str, path_prefix: str = None, includ
                     continue
             except Exception:
                 continue
-                
+
         # For HTML pages (main content), prefer text/html
         mime = r.get("mimetype", "").lower()
         if not include_nonhtml and not (mime.startswith("text/html") or "html" in mime):
             # Only include HTML files unless include_nonhtml is set
             continue
-                
-        # Use normalized URL as key if ignoring query parameters
-        url_key = normalize_url(o, ignore_query_params) if ignore_query_params else o
-        
-        if (url_key not in latest) or ts > latest[url_key]["timestamp"]:
-            latest[url_key] = r
 
-    items = list(latest.values())
+        url_key = normalize_url(o, ignore_query_params) if ignore_query_params else o
+        status = str(r.get("statuscode", ""))
+        good = is_good(status)
+
+        if url_key not in latest:
+            latest[url_key] = {**r, "_good": good}
+            continue
+
+        cur = latest[url_key]
+        cur_good = cur.get("_good", True)
+        cur_ts = cur.get("timestamp", "")
+
+        # Prefer good over bad; within same goodness, prefer newer timestamp
+        if (good and not cur_good) or (good == cur_good and ts > cur_ts):
+            latest[url_key] = {**r, "_good": good}
+
+    # Drop helper flag before returning
+    for v in latest.values():
+        v.pop("_good", None)
+
+    return list(latest.values())
     return items
 
 
@@ -638,8 +661,8 @@ def main():
 
     ap = argparse.ArgumentParser(description="Build a static replica from the Wayback Machine.")
     ap.add_argument("domain", help="Root domain, e.g. digitalbuyingguide.org")
-    ap.add_argument("--cutoff", default="2022-06-01",
-                    help="Cutoff date (YYYY-MM-DD or YYYYMMDD). Interpreted as END of that day.")
+    ap.add_argument("--cutoff", default=None,
+                    help="Cutoff date (YYYY-MM-DD or YYYYMMDD). Interpreted as END of that day. Default: today (UTC).")
     ap.add_argument("--cutoff-utc-ts", default=None,
                     help="Optional exact IA timestamp YYYYMMDDhhmmss to use instead of --cutoff.")
     ap.add_argument("--outdir", default=None,
@@ -678,8 +701,11 @@ def main():
     root_host = args.domain.lower()
     if args.cutoff_utc_ts:
         cutoff_ts = to_ts_full(args.cutoff_utc_ts)
-    else:
+    elif args.cutoff:
         cutoff_ts = to_ts_eod(args.cutoff)
+    else:
+        today = dt.date.today().strftime("%Y-%m-%d")
+        cutoff_ts = to_ts_eod(today)
     outdir = args.outdir or default_outdir(root_host, cutoff_ts)
     os.makedirs(outdir, exist_ok=True)
 
