@@ -6,3 +6,8 @@ digitalbuy*
 accessibility*
 output/
 site/
+*_20*/
+.vscode/
+.idea/
+.env
+*.log
