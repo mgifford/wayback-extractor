@@ -19,6 +19,7 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
 - Generate detailed reports (manifest.json, report.csv, report.md)
 - Smart retries and rate limiting to be respectful to the Internet Archive
 - Progress tracking with URLs/min statistics
+- Prefers the freshest available non-404 Wayback snapshots, falling back gracefully if only 404s exist
 
 ## Requirements
 
@@ -61,7 +62,7 @@ Basic usage:
 python wayback_extractor.py example.org
 ```
 
-This will mirror example.org as it appeared on June 1, 2022 (the default cutoff date) and place the files in a directory named `example.org_20220601`.
+By default this mirrors example.org using today's date (e.g., 2026-01-20) and places the files in a directory named `example.org_YYYYMMDD`. The script automatically picks the newest non-404 snapshot when multiple snapshots exist for a URL, falling back to the newest 404 only if no non-404 snapshots are available.
 
 ### Command Line Options
 
@@ -73,7 +74,7 @@ python wayback_extractor.py [domain] [options]
 - `domain`: The root domain to mirror (e.g., example.org)
 
 #### Optional Arguments:
-- `--cutoff YYYY-MM-DD`: Cutoff date (default: 2022-06-01)
+- `--cutoff YYYY-MM-DD`: Cutoff date (default: today's date)
 - `--cutoff-utc-ts YYYYMMDDhhmmss`: Exact timestamp to use instead of cutoff date
 - `--outdir DIR`: Output directory (default: domain_YYYYMMDD)
 - `--no-subdomains`: Do not include subdomains (default: include them)
