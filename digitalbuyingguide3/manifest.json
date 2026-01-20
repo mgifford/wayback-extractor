@@ -1,0 +1,2421 @@
+{
+  "domain": "digitalbuyingguide.org",
+  "cutoff_ts": "20220601235959",
+  "pages": [
+    {
+      "original": "https://www.digitalbuyingguide.org/assets/images/email-logo.377cafba2306.svg",
+      "timestamp": "20210603204005",
+      "local": "assets/images/email-logo.377cafba2306.svg",
+      "assets": [],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/assets/images/facebook-logo.8d2e90aa626d.svg",
+      "timestamp": "20210603204005",
+      "local": "assets/images/facebook-logo.8d2e90aa626d.svg",
+      "assets": [],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+      "timestamp": "20201203152705",
+      "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+      "assets": [],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/assets/images/linkedin-logo.0ebc3f7e87b3.svg",
+      "timestamp": "20210603204005",
+      "local": "assets/images/linkedin-logo.0ebc3f7e87b3.svg",
+      "assets": [],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/assets/images/twitter-logo.67c25d615cfd.svg",
+      "timestamp": "20210603204005",
+      "local": "assets/images/twitter-logo.67c25d615cfd.svg",
+      "assets": [],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+      "timestamp": "20210603144155",
+      "local": "assets/javascripts/application.88615da4ccc8.js",
+      "assets": [],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+      "timestamp": "20201203111540",
+      "local": "assets/stylesheets/application.e9fe421e324c.css",
+      "assets": [],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/",
+      "timestamp": "20200925022355",
+      "local": "en/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/about/",
+      "timestamp": "20200925035940",
+      "local": "en/about/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/accessibility-statement/",
+      "timestamp": "20200925035835",
+      "local": "en/accessibility-statement/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/",
+      "timestamp": "20200925034959",
+      "local": "en/case-studies/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/buying-in-the-open-renewing-mexico-citys-cycle-hire-scheme/",
+      "timestamp": "20210917012620",
+      "local": "en/case-studies/buying-in-the-open-renewing-mexico-citys-cycle-hire-scheme/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/collating-comparable-contracting-data-multiple-publishers/",
+      "timestamp": "20210930202620",
+      "local": "en/case-studies/collating-comparable-contracting-data-multiple-publishers/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/delivering-social-value-norfolk-through-their-supplier-partners/",
+      "timestamp": "20210916120842",
+      "local": "en/case-studies/delivering-social-value-norfolk-through-their-supplier-partners/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/designing-cities-work-women-value-inclusive-design/",
+      "timestamp": "20200925040242",
+      "local": "en/case-studies/designing-cities-work-women-value-inclusive-design/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/driving-artificial-intelligence-adoption-through-procurement-how-uk-keeping-its-roads-safe/",
+      "timestamp": "20201118224119",
+      "local": "en/case-studies/driving-artificial-intelligence-adoption-through-procurement-how-uk-keeping-its-roads-safe/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/emergency-buying-colombias-digital-approach-to-covid-19/",
+      "timestamp": "20201027032408",
+      "local": "en/case-studies/emergency-buying-colombias-digital-approach-to-covid-19/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/empowering-women-owned-businesses-dominican-republic/",
+      "timestamp": "20210308074737",
+      "local": "en/case-studies/empowering-women-owned-businesses-dominican-republic/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/how-covid-19-has-accelerated-procurement-reform-ecuador/",
+      "timestamp": "20210303084527",
+      "local": "en/case-studies/how-covid-19-has-accelerated-procurement-reform-ecuador/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/how-new-zealand-using-procurement-benefit-indigenous-businesses/",
+      "timestamp": "20201118154719",
+      "local": "en/case-studies/how-new-zealand-using-procurement-benefit-indigenous-businesses/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/increasing-transparency-and-accountability-how-mexicos-anti-corruption-secretariat-is-opening-up-and-connecting-procurement-data/",
+      "timestamp": "20201101024913",
+      "local": "en/case-studies/increasing-transparency-and-accountability-how-mexicos-anti-corruption-secretariat-is-opening-up-and-connecting-procurement-data/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/prototyping-how-beneficial-ownership-data-can-identify-corruption-risk-public-procurement/",
+      "timestamp": "20210930151003",
+      "local": "en/case-studies/prototyping-how-beneficial-ownership-data-can-identify-corruption-risk-public-procurement/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/case-studies/sustainable-it-buying-scottish-government-case-study/",
+      "timestamp": "20200925021744",
+      "local": "en/case-studies/sustainable-it-buying-scottish-government-case-study/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/cookies-policy/",
+      "timestamp": "20200925030140",
+      "local": "en/cookies-policy/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/",
+      "timestamp": "20201027032756",
+      "local": "en/emergency-buying/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/how-buy-faster/",
+      "timestamp": "20210303091304",
+      "local": "en/emergency-buying/how-buy-faster/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/how-buy-faster/engage-and-support-suppliers/",
+      "timestamp": "20210303081725",
+      "local": "en/emergency-buying/how-buy-faster/engage-and-support-suppliers/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/how-buy-faster/prioritise-needs/",
+      "timestamp": "20210303090708",
+      "local": "en/emergency-buying/how-buy-faster/prioritise-needs/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/how-buy-faster/use-emergency-or-accelerated-procedures/",
+      "timestamp": "20201126132025",
+      "local": "en/emergency-buying/how-buy-faster/use-emergency-or-accelerated-procedures/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/how-maintain-standards/",
+      "timestamp": "20210303082947",
+      "local": "en/emergency-buying/how-maintain-standards/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/how-maintain-standards/ensure-value-money/",
+      "timestamp": "20210303073602",
+      "local": "en/emergency-buying/how-maintain-standards/ensure-value-money/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/how-maintain-standards/maintain-transparency/",
+      "timestamp": "20201126110450",
+      "local": "en/emergency-buying/how-maintain-standards/maintain-transparency/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/how-maintain-standards/return-sustainable-buying/",
+      "timestamp": "20210303074932",
+      "local": "en/emergency-buying/how-maintain-standards/return-sustainable-buying/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/introduction/",
+      "timestamp": "20210303074703",
+      "local": "en/emergency-buying/introduction/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/introduction/defining-emergency/",
+      "timestamp": "20210303074425",
+      "local": "en/emergency-buying/introduction/defining-emergency/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/emergency-buying/introduction/planning-emergency/",
+      "timestamp": "20210303074142",
+      "local": "en/emergency-buying/introduction/planning-emergency/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/",
+      "timestamp": "20200925035311",
+      "local": "en/guide/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/evaluate-and-award/",
+      "timestamp": "20200925035039",
+      "local": "en/guide/evaluate-and-award/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/evaluate-and-award/award-the-contract/",
+      "timestamp": "20210413004524",
+      "local": "en/guide/evaluate-and-award/award-the-contract/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/evaluate-and-award/evaluate-suppliers/",
+      "timestamp": "20210413010237",
+      "local": "en/guide/evaluate-and-award/evaluate-suppliers/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/evaluate-and-award/shortlist-suppliers/",
+      "timestamp": "20210413004811",
+      "local": "en/guide/evaluate-and-award/shortlist-suppliers/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/inform-the-market/",
+      "timestamp": "20200925041935",
+      "local": "en/guide/inform-the-market/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/inform-the-market/advertise-the-opportunity/",
+      "timestamp": "20210413011626",
+      "local": "en/guide/inform-the-market/advertise-the-opportunity/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/inform-the-market/answer-supplier-questions/",
+      "timestamp": "20210413001114",
+      "local": "en/guide/inform-the-market/answer-supplier-questions/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/inform-the-market/write-evaluation-criteria/",
+      "timestamp": "20210413011710",
+      "local": "en/guide/inform-the-market/write-evaluation-criteria/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/inform-the-market/write-requirements/",
+      "timestamp": "20210413014342",
+      "local": "en/guide/inform-the-market/write-requirements/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/manage-delivery/",
+      "timestamp": "20200925022053",
+      "local": "en/guide/manage-delivery/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/manage-delivery/close-the-contract/",
+      "timestamp": "20210413015629",
+      "local": "en/guide/manage-delivery/close-the-contract/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/manage-delivery/manage-contract-changes/",
+      "timestamp": "20210413021848",
+      "local": "en/guide/manage-delivery/manage-contract-changes/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/manage-delivery/manage-supplier-delivery/",
+      "timestamp": "20210413012148",
+      "local": "en/guide/manage-delivery/manage-supplier-delivery/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/manage-delivery/manage-supplier-relationship/",
+      "timestamp": "20210413015927",
+      "local": "en/guide/manage-delivery/manage-supplier-relationship/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/",
+      "timestamp": "20200925023149",
+      "local": "en/guide/plan/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/choose-an-approach/",
+      "timestamp": "20210413013915",
+      "local": "en/guide/plan/choose-an-approach/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/define-outcomes/",
+      "timestamp": "20210413005124",
+      "local": "en/guide/plan/define-outcomes/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/estimate-costs/",
+      "timestamp": "20210413011220",
+      "local": "en/guide/plan/estimate-costs/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/share-information-early/",
+      "timestamp": "20210413001310",
+      "local": "en/guide/plan/share-information-early/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/simplify-contracts/",
+      "timestamp": "20210413001437",
+      "local": "en/guide/plan/simplify-contracts/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/understand-user-needs/",
+      "timestamp": "20200925030429",
+      "local": "en/guide/plan/understand-user-needs/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/use-digital-buying-tools/",
+      "timestamp": "20210413014126",
+      "local": "en/guide/plan/use-digital-buying-tools/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/guide/plan/work-as-a-team/",
+      "timestamp": "20210413014731",
+      "local": "en/guide/plan/work-as-a-team/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/en/privacy/",
+      "timestamp": "20200925024517",
+      "local": "en/privacy/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.c4bf1f74cf7a.js",
+          "local": "assets/javascripts/application.c4bf1f74cf7a.js",
+          "ok": false,
+          "content_type": "text/html"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.f14172d3b9bf.css",
+          "local": "assets/stylesheets/application.f14172d3b9bf.css",
+          "ok": false,
+          "content_type": "text/html"
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/es/",
+      "timestamp": "20201204112519",
+      "local": "es/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/es/estudios-de-casos/compras-de-emergencia-el-enfoque-digital-de-colombia-para-covid19-es/",
+      "timestamp": "20201116112919",
+      "local": "es/estudios-de-casos/compras-de-emergencia-el-enfoque-digital-de-colombia-para-covid19-es/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/es/estudios-de-casos/covid19-y-reforma-de-la-contratacion-publica-en-ecuador-es/",
+      "timestamp": "20201217105404",
+      "local": "es/estudios-de-casos/covid19-y-reforma-de-la-contratacion-publica-en-ecuador-es/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/es/estudios-de-casos/incrementando-transparencia-c%C3%B3mo-m%C3%A9xico-est%C3%A1-abriendo-y-conectando-datos-de-la-contrataci%C3%B3n-p%C3%BAblica/",
+      "timestamp": "20201212100326",
+      "local": "es/estudios-de-casos/incrementando-transparencia-c%C3%B3mo-m%C3%A9xico-est%C3%A1-abriendo-y-conectando-datos-de-la-contrataci%C3%B3n-p%C3%BAblica/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/es/la-gu%C3%ADa/",
+      "timestamp": "20210413012102",
+      "local": "es/la-gu%C3%ADa/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/es/la-gu%C3%ADa/administrar-la-entrega/cerrar-el-contrato/",
+      "timestamp": "20210509192044",
+      "local": "es/la-gu%C3%ADa/administrar-la-entrega/cerrar-el-contrato/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/es/la-gu%C3%ADa/evaluar-y-adjudicar/",
+      "timestamp": "20210509190156",
+      "local": "es/la-gu%C3%ADa/evaluar-y-adjudicar/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/es/privacy-es/",
+      "timestamp": "20210620225541",
+      "local": "es/privacy-es/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/",
+      "timestamp": "20201204104935",
+      "local": "id/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/cookies-policy-id/",
+      "timestamp": "20210303082609",
+      "local": "id/cookies-policy-id/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/",
+      "timestamp": "20201101052530",
+      "local": "id/panduan/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/memberi-tahu-pasar/",
+      "timestamp": "20210413014255",
+      "local": "id/panduan/memberi-tahu-pasar/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/memberi-tahu-pasar/mempromosikan-peluang/",
+      "timestamp": "20210413021317",
+      "local": "id/panduan/memberi-tahu-pasar/mempromosikan-peluang/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/memberi-tahu-pasar/menentukan-metode-evaluasi/",
+      "timestamp": "20210413010000",
+      "local": "id/panduan/memberi-tahu-pasar/menentukan-metode-evaluasi/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/memberi-tahu-pasar/menentukan-persyaratan-kualifikasi/",
+      "timestamp": "20210413003626",
+      "local": "id/panduan/memberi-tahu-pasar/menentukan-persyaratan-kualifikasi/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/memberi-tahu-pasar/menjawab-pertanyaan-penyedia/",
+      "timestamp": "20210413012827",
+      "local": "id/panduan/memberi-tahu-pasar/menjawab-pertanyaan-penyedia/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengelola-pemenuhan/",
+      "timestamp": "20210413022933",
+      "local": "id/panduan/mengelola-pemenuhan/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengelola-pemenuhan/mengelola-hubungan-pemasok/",
+      "timestamp": "20210413001543",
+      "local": "id/panduan/mengelola-pemenuhan/mengelola-hubungan-pemasok/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengelola-pemenuhan/mengelola-pemenuhan-oleh-pemasok/",
+      "timestamp": "20210413011540",
+      "local": "id/panduan/mengelola-pemenuhan/mengelola-pemenuhan-oleh-pemasok/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengelola-pemenuhan/mengelola-perubahan-kontrak/",
+      "timestamp": "20210413020748",
+      "local": "id/panduan/mengelola-pemenuhan/mengelola-perubahan-kontrak/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengelola-pemenuhan/menyelesaikan-kontrak/",
+      "timestamp": "20210413014517",
+      "local": "id/panduan/mengelola-pemenuhan/menyelesaikan-kontrak/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengevaluasi-dan-memberikan-kontrak/",
+      "timestamp": "20210413015542",
+      "local": "id/panduan/mengevaluasi-dan-memberikan-kontrak/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengevaluasi-dan-memberikan-kontrak/memberikan-kontrak/",
+      "timestamp": "20210413003721",
+      "local": "id/panduan/mengevaluasi-dan-memberikan-kontrak/memberikan-kontrak/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengevaluasi-dan-memberikan-kontrak/mengevaluasi-pemasok/",
+      "timestamp": "20210413014814",
+      "local": "id/panduan/mengevaluasi-dan-memberikan-kontrak/mengevaluasi-pemasok/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/mengevaluasi-dan-memberikan-kontrak/menyusun-daftar-pemasok-pilihan/",
+      "timestamp": "20210413022056",
+      "local": "id/panduan/mengevaluasi-dan-memberikan-kontrak/menyusun-daftar-pemasok-pilihan/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/merencanakan/",
+      "timestamp": "20210413012015",
+      "local": "id/panduan/merencanakan/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/merencanakan/analisis-pasar/",
+      "timestamp": "20210413012951",
+      "local": "id/panduan/merencanakan/analisis-pasar/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/merencanakan/bekerja-sama-sebagai-tim/",
+      "timestamp": "20210413002823",
+      "local": "id/panduan/merencanakan/bekerja-sama-sebagai-tim/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/merencanakan/harga-perkiraan-sendiri/",
+      "timestamp": "20210413004325",
+      "local": "id/panduan/merencanakan/harga-perkiraan-sendiri/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/merencanakan/memahami-kebutuhan-pengguna/",
+      "timestamp": "20210303092637",
+      "local": "id/panduan/merencanakan/memahami-kebutuhan-pengguna/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/merencanakan/memilih-pendekatan/",
+      "timestamp": "20210413011358",
+      "local": "id/panduan/merencanakan/memilih-pendekatan/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/panduan/merencanakan/menetapkan-hasil/",
+      "timestamp": "20210413003953",
+      "local": "id/panduan/merencanakan/menetapkan-hasil/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/privacy-id/",
+      "timestamp": "20210620230921",
+      "local": "id/privacy-id/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/studi-kasus-global/",
+      "timestamp": "20210303084924",
+      "local": "id/studi-kasus-global/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/studi-kasus-global/how-scottish-government-has-worked-suppliers-reduce-electronic-waste-id/",
+      "timestamp": "20210303083813",
+      "local": "id/studi-kasus-global/how-scottish-government-has-worked-suppliers-reduce-electronic-waste-id/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/studi-kasus-global/mendesain-kota-yang-baik-untuk-perempuan-nilai-dari-desain-inklusif/",
+      "timestamp": "20201027030038",
+      "local": "id/studi-kasus-global/mendesain-kota-yang-baik-untuk-perempuan-nilai-dari-desain-inklusif/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    },
+    {
+      "original": "https://www.digitalbuyingguide.org/id/tentang-panduan/",
+      "timestamp": "20210303090101",
+      "local": "id/tentang-panduan/index.html",
+      "assets": [
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/images/favicon.e2fd9d4a49bb.ico",
+          "local": "assets/images/favicon.e2fd9d4a49bb.ico",
+          "ok": true,
+          "content_type": "image/x-icon"
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/javascripts/application.88615da4ccc8.js",
+          "local": "assets/javascripts/application.88615da4ccc8.js",
+          "ok": true,
+          "content_type": "application/javascript; charset=\"utf-8\""
+        },
+        {
+          "url": "https://www.digitalbuyingguide.org/assets/stylesheets/application.e9fe421e324c.css",
+          "local": "assets/stylesheets/application.e9fe421e324c.css",
+          "ok": true,
+          "content_type": "text/css; charset=\"utf-8\""
+        }
+      ],
+      "fallbacks": 0
+    }
+  ]
+}

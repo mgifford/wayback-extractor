@@ -9,7 +9,6 @@ https://github.com/hartator/wayback-machine-downloader/
 
 And there is also this service:
 https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-pricing/
-
 ## Features
 
 - Create a fully functional offline copy of a website as it appeared at a specific date
@@ -24,10 +23,10 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
 ## Requirements
 
 - Python 3.8 or higher
-- Required Python packages:
-  - `requests`
-  - `beautifulsoup4`
-  - `lxml`
+- Required Python packages (see `requirements.txt`):
+   - `requests`
+   - `beautifulsoup4`
+   - `lxml`
 
 ## Installation
 
@@ -37,7 +36,14 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
    cd wayback-extractor
    ```
 
-2. Install the required dependencies:
+2. (Recommended) Create and activate a virtual environment, then install dependencies from `requirements.txt`:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+   If you prefer not to use a virtual environment, you can install directly:
    ```bash
    pip install requests beautifulsoup4 lxml
    ```
@@ -167,5 +173,4 @@ If pages are missing:
 ## Acknowledgements
 
 This tool relies on the Internet Archive's Wayback Machine. Please be respectful of their service by using reasonable rate limits.
-
 AI was used to generate this.
