@@ -454,6 +454,7 @@ def latest_per_original(records, cutoff_ts: str, path_prefix: str = None, includ
     If only 404s exist, take the newest 404 so we still mirror something."""
 
     def is_good(status: str) -> bool:
+        """Return True when *status* is not a 404-class HTTP status code."""
         if not status:
             return True
         return not str(status).startswith("404")
@@ -510,7 +511,18 @@ def latest_per_original(records, cutoff_ts: str, path_prefix: str = None, includ
     return list(latest.values())
 
 
-def cdx_history_for_url(session: requests.Session, url: str, cutoff_ts: str):
+def cdx_history_for_url(session: requests.Session, url: str, cutoff_ts: str) -> list:
+    """Return all CDX records for *url* up to and including *cutoff_ts*.
+
+    Args:
+        session: Authenticated requests session.
+        url: Exact original URL to query.
+        cutoff_ts: Upper-bound IA timestamp (YYYYMMDDhhmmss).
+
+    Returns:
+        List of CDX record dicts, each with keys like timestamp, original,
+        mimetype, statuscode, digest, and length.
+    """
     base = {
         "url": url,
         "output": "json",
@@ -677,18 +689,9 @@ def rewrite_css_urls(css_bytes: bytes, base_url: str, root_host: str, out_css_di
     except UnicodeDecodeError:
         css = css_bytes.decode("latin-1", errors="replace")
 
-    def repl(m):
+    def repl(m) -> str:
+        """Rewrite a single url(...) match to a relative local path."""
         raw = m.group(2).strip()
-        if raw.startswith(("data:", "#")):
-            return m.group(0)
-        absu = urljoin(base_url, raw)
-        if is_same_site(absu, root_host):
-            local = ensure_local_path(urlparse(absu).path)
-            rel = os.path.relpath(local, out_css_dir)
-            return f"url({rel})"
-        return f"url({raw})"
-
-    # Basic url(...) updates
     return CSS_URL_RE.sub(repl, css)
 
 
@@ -746,7 +749,8 @@ def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, b
                 assets.add(abs_src)
 
     # Attribute rewriting helper
-    def rewrite_attr(tag, attr, collect=True):
+    def rewrite_attr(tag: str, attr: str, collect: bool = True) -> None:
+        """Rewrite *attr* on every *tag* element to a relative local path."""
         for el in list(soup.find_all(tag)):
             v = el.get(attr)
             if not v:
@@ -779,7 +783,8 @@ def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, b
     for style in soup.find_all(style=True):
         style_str = style["style"]
 
-        def repl(m):
+        def repl(m) -> str:
+            """Rewrite a url(...) value inside an inline style to a relative local path."""
             inside = m.group(2).strip()
             absu = urljoin(base_url, inside)
             if is_same_site(absu, root_host):
