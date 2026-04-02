@@ -45,14 +45,27 @@ CSS_URL_RE = re.compile(r"""url\(\s*(['"]?)([^'")]+)\1\s*\)""", re.IGNORECASE)
 
 # ---------------- Rate limiter ----------------
 class RateLimiter:
-    def __init__(self, rps=0.5, burst=2):
+    """Token-bucket rate limiter for polite crawling of the Internet Archive."""
+
+    def __init__(self, rps: float = 0.5, burst: int = 2) -> None:
+        """Initialize the rate limiter.
+
+        Args:
+            rps: Sustained requests per second (minimum 0.05).
+            burst: Maximum token capacity for short bursts (minimum 1).
+        """
         self.capacity = float(max(burst, 1))
         self.tokens = self.capacity
         self.fill = float(max(rps, 0.05))
         self.t0 = time.monotonic()
         self.lock = threading.Lock()
 
-    def take(self, n=1.0):
+    def take(self, n: float = 1.0) -> None:
+        """Consume n tokens, sleeping as needed to respect the rate limit.
+
+        Args:
+            n: Number of tokens to consume (default 1.0).
+        """
         with self.lock:
             now = time.monotonic()
             elapsed = now - self.t0
@@ -70,12 +83,31 @@ class RateLimiter:
 
 # ---------------- Utils ----------------
 def to_ts_full(ts14: str) -> str:
+    """Validate and return a 14-digit Internet Archive timestamp string.
+
+    Args:
+        ts14: Timestamp string in YYYYMMDDhhmmss format.
+
+    Returns:
+        The validated timestamp unchanged.
+
+    Raises:
+        ValueError: If ts14 is not exactly 14 digits.
+    """
     if not re.fullmatch(r"\d{14}", ts14):
         raise ValueError(f"Invalid IA timestamp: {ts14} (expected YYYYMMDDhhmmss)")
     return ts14
 
 
 def to_ts_eod(date_str: str) -> str:
+    """Convert a date string to an end-of-day IA timestamp (YYYYMMDD235959).
+
+    Args:
+        date_str: Date in YYYY-MM-DD or YYYYMMDD format.
+
+    Returns:
+        14-digit timestamp representing the end of the given day.
+    """
     # Accept YYYY-MM-DD or YYYYMMDD; return end-of-day ts YYYYMMDD235959
     if re.fullmatch(r"\d{8}", date_str):
         d = dt.datetime.strptime(date_str, "%Y%m%d")
@@ -85,14 +117,39 @@ def to_ts_eod(date_str: str) -> str:
 
 
 def yyyymmdd(ts14: str) -> str:
+    """Extract the YYYYMMDD date portion from a 14-digit IA timestamp.
+
+    Args:
+        ts14: 14-digit IA timestamp.
+
+    Returns:
+        The first 8 characters representing the date (YYYYMMDD).
+    """
     return ts14[:8]
 
 
 def default_outdir(domain: str, cutoff_ts: str) -> str:
+    """Build the default output directory name from domain and cutoff timestamp.
+
+    Args:
+        domain: Root domain being mirrored.
+        cutoff_ts: 14-digit IA cutoff timestamp.
+
+    Returns:
+        Directory name in the form ``domain_YYYYMMDD``.
+    """
     return f"{domain}_{yyyymmdd(cutoff_ts)}"
 
 
 def ensure_local_path(path: str) -> str:
+    """Map a URL path to a local filesystem path, defaulting to index.html.
+
+    Args:
+        path: URL path component to convert.
+
+    Returns:
+        Relative filesystem path with leading slash stripped.
+    """
     # Map URL path to local filesystem path, default index.html
     if not path or path.endswith("/"):
         path = (path or "/") + "index.html"
@@ -101,11 +158,26 @@ def ensure_local_path(path: str) -> str:
 
 
 def is_same_site(url: str, root_host: str) -> bool:
+    """Return True if url belongs to root_host or any subdomain of it.
+
+    Args:
+        url: Absolute URL to check.
+        root_host: Bare hostname to compare against (e.g. ``example.com``).
+
+    Returns:
+        True when the URL's netloc equals or is a subdomain of root_host.
+    """
     h = urlparse(url).netloc.lower()
     return h == root_host or h.endswith("." + root_host)
 
 
 def make_session() -> requests.Session:
+    """Create a requests Session pre-configured with retries and the crawler UA.
+
+    Returns:
+        A :class:`requests.Session` with exponential-backoff retry logic mounted
+        on both ``https://`` and ``http://`` adapters.
+    """
     s = requests.Session()
     s.headers.update({"User-Agent": UA})
     retry = Retry(
@@ -125,16 +197,27 @@ def make_session() -> requests.Session:
 
 
 # ---------------- CDX helpers ----------------
-def _cdx(session: requests.Session, params: dict, timeout=90, endpoint=CDX):
+def _cdx(session: requests.Session, params: dict, timeout: int = 90, endpoint: str = CDX) -> list:
+    """Query a CDX API endpoint and return parsed rows as a list of dicts.
+
+    Args:
+        session: Active :class:`requests.Session` to use for the request.
+        params: CDX API query parameters.
+        timeout: Request timeout in seconds.
+        endpoint: CDX API base URL.
+
+    Returns:
+        List of row dicts keyed by the CDX field names; empty list on error.
+    """
     try:
         if "url" in params and "output" in params and params["output"] == "json":
             print(f"[DEBUG] CDX Query: {endpoint}?url={params['url']}")
-            
+
         r = session.get(endpoint, params=params, timeout=timeout)
         r.raise_for_status()
         if not r.text.strip():
             return []
-            
+
         try:
             rows = r.json()
             if not rows:
@@ -151,22 +234,22 @@ def _cdx(session: requests.Session, params: dict, timeout=90, endpoint=CDX):
         return []
 
 
-def _cdx_multi_endpoint(session: requests.Session, params: dict, timeout=90):
+def _cdx_multi_endpoint(session: requests.Session, params: dict, timeout: int = 90) -> list:
     """Try multiple CDX endpoints and combine results."""
     results = []
-    
+
     # Try the prefix matchType explicitly (important for finding all URLs)
     if "matchType" not in params:
         params_with_prefix = {**params, "matchType": "prefix"}
         results.extend(_cdx(session, params_with_prefix, timeout, CDX))
-    
+
     # Try primary endpoint
     results.extend(_cdx(session, params, timeout, CDX))
-    
+
     # Try alternate endpoint if few results
     if len(results) < 10:
         results.extend(_cdx(session, params, timeout, CDX_ALTERNATE))
-    
+
     return results
 
 
@@ -177,7 +260,7 @@ def check_availability_api(session: requests.Session, domain: str, cutoff_ts: st
         url = f"{WAYBACK_AVAILABILITY}?url={domain}&timestamp={cutoff_ts}"
         resp = session.get(url, timeout=30)
         results = []
-        
+
         if resp.status_code == 200:
             data = resp.json()
             if 'archived_snapshots' in data and 'closest' in data['archived_snapshots']:
@@ -195,12 +278,12 @@ def check_availability_api(session: requests.Session, domain: str, cutoff_ts: st
                             'digest': '',
                             'length': ''
                         })
-            
+
         # Also try with www. prefix if not already present
         domain_with_www = domain if domain.startswith('www.') else f'www.{domain}'
         url = f"{WAYBACK_AVAILABILITY}?url={domain_with_www}&timestamp={cutoff_ts}"
         resp = session.get(url, timeout=30)
-        
+
         if resp.status_code == 200:
             data = resp.json()
             if 'archived_snapshots' in data and 'closest' in data['archived_snapshots']:
@@ -218,12 +301,12 @@ def check_availability_api(session: requests.Session, domain: str, cutoff_ts: st
                             'digest': '',
                             'length': ''
                         })
-        
+
         if debug and results:
             print(f"[DEBUG] Availability API returned {len(results)} results")
             for r in results:
                 print(f"  {r.get('timestamp')} {r.get('statuscode')} {r.get('original')}")
-                
+
         return results
     except Exception as e:
         if debug:
@@ -234,7 +317,7 @@ def check_availability_api(session: requests.Session, domain: str, cutoff_ts: st
 def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, subdomains=True, debug=False):
     """Enhanced CDX query with multiple strategies to maximize URL coverage.
     IMPORTANT: First get ALL URLs (no date filter), then filter by date later."""
-    
+
     # Base params without date filter to get ALL archived URLs
     base_all_urls = {
         "output": "json",
@@ -242,65 +325,65 @@ def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, s
         "collapse": "urlkey",  # Only one snapshot per URL
         # No statuscode filter here; we'll pick best non-404 per URL later
     }
-    
+
     # Generate domain variants
     domain_variants = set()
     # Original form and lowercase
     domain_variants.add(domain)
     domain_variants.add(domain.lower())
-    
+
     # With/without www
     if domain.startswith("www."):
         domain_variants.add(domain[4:])
     else:
         domain_variants.add("www." + domain)
-        
+
     # Also add lowercase www version
     if not domain.lower().startswith("www."):
         domain_variants.add("www." + domain.lower())
-    
+
     all_urls = []
     unique_originals = set()
 
     # STEP 1: First find ALL URLs ever archived for this domain (no date filter)
     if debug:
         print(f"[DEBUG] Searching for ALL archived URLs for {domain} variants: {domain_variants}")
-    
+
     for d in domain_variants:
         # Method 1: Wildcard search (domain*)
         query_params = {**base_all_urls, "url": f"{d}*"}
         if debug:
             print(f"[DEBUG] Trying CDX query with: url={d}*")
-            
+
         results = _cdx(session, query_params)
-        
+
         # Track unique originals
         for r in results:
             url = r.get("original")
             if url and url not in unique_originals:
                 unique_originals.add(url)
-                
+
         all_urls.extend(results)
-        
+
         # Method 2: Domain/* search with matchType
         if subdomains:
             query_params = {**base_all_urls, "url": f"{d}/*", "matchType": "domain"}
         else:
             query_params = {**base_all_urls, "url": f"{d}/*", "matchType": "host"}
-            
+
         if debug:
             print(f"[DEBUG] Trying CDX query with: url={d}/*, matchType={'domain' if subdomains else 'host'}")
-            
+
         results = _cdx(session, query_params)
-        
+
         # Track unique originals
         for r in results:
             url = r.get("original")
             if url and url not in unique_originals:
                 unique_originals.add(url)
-                
+
         all_urls.extend(results)
-    
+
     if debug:
         print(f"[DEBUG] Found {len(unique_originals)} unique URLs ever archived for this domain:")
         for i, url in enumerate(sorted(list(unique_originals))):
@@ -308,13 +391,13 @@ def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, s
                 print(f"  {url}")
         if len(unique_originals) > 25:
             print(f"  ... and {len(unique_originals) - 25} more")
-    
+
     # STEP 2: Filter by cutoff date
     filtered_by_date = [r for r in all_urls if r.get("timestamp", "") <= cutoff_ts]
-    
+
     if debug:
         print(f"[DEBUG] After filtering by cutoff date {cutoff_ts}: {len(filtered_by_date)} snapshots")
-    
+
     # STEP 3: Get the latest snapshot for each URL
     latest_per_url = {}
     for r in filtered_by_date:
@@ -322,39 +405,39 @@ def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, s
         ts = r.get("timestamp", "")
         if not url or not ts:
             continue
-        
+
         if url not in latest_per_url or ts > latest_per_url[url]["timestamp"]:
             latest_per_url[url] = r
-    
+
     if debug:
         print(f"[DEBUG] Latest snapshot per URL (≤ cutoff): {len(latest_per_url)} URLs")
-    
+
     # Convert to list
     uniq = list(latest_per_url.values())
-    
+
     # Also try availability API as a fallback
     if len(uniq) < 5:
         avail_results = check_availability_api(session, domain, cutoff_ts, debug)
-        
+
         # Add any new URLs from availability API
         for r in avail_results:
             url = r.get("original", "")
             if url and url not in latest_per_url:
                 uniq.append(r)
-    
+
     if debug:
         print(f"[DEBUG] Final unique URLs with snapshots: {len(uniq)}")
         for r in uniq[:25]:
             print(f"  {r.get('timestamp')} {r.get('statuscode')} {r.get('mimetype')}  {r.get('original')}")
-    
+
     return uniq
 
 
-def normalize_url(url: str, ignore_query_params=False):
+def normalize_url(url: str, ignore_query_params: bool = False) -> str:
     """Normalize a URL by optionally removing query parameters."""
     if not url:
         return url
-        
+
     try:
         parsed = urlparse(url)
         if ignore_query_params:
@@ -425,7 +508,6 @@ def latest_per_original(records, cutoff_ts: str, path_prefix: str = None, includ
         v.pop("_good", None)
 
     return list(latest.values())
-    return items
 
 
 def cdx_history_for_url(session: requests.Session, url: str, cutoff_ts: str):
@@ -442,45 +524,58 @@ def cdx_history_for_url(session: requests.Session, url: str, cutoff_ts: str):
 def pick_best_snapshot(records, session, limiter, include_nonhtml=False, debug=False, timeout=30):
     """Find the best snapshot by trying each one, prioritizing newest that returns 200 and is valid.
     Iterate newest -> oldest; validate content/type after fetch."""
-    
+
     # Sort newest to oldest
     sorted_records = sorted(records, key=lambda x: x["timestamp"], reverse=True)
-    
+
     if debug and sorted_records:
         print(f"[DEBUG] Checking {len(sorted_records)} snapshots for best version")
-    
+
     for r in sorted_records:
         try:
             resp = fetch_id(session, limiter, r["timestamp"], r["original"], timeout=timeout)
         except requests.exceptions.SSLError:
             resp = fetch_if(session, limiter, r["timestamp"], r["original"], timeout=timeout)
-        
+
         if resp.status_code != 200:
             if debug:
                 print(f"[DEBUG] Snapshot {r['timestamp']} returned status {resp.status_code}, skipping")
             continue
-            
+
         if not origin_ok(resp):
             if debug:
                 print(f"[DEBUG] Snapshot {r['timestamp']} original status not OK, skipping")
             continue
-            
+
         if not include_nonhtml and not looks_html(resp):
             if debug:
                 print(f"[DEBUG] Snapshot {r['timestamp']} is not HTML, skipping")
             continue
-            
+
         # Found a good snapshot
         if debug:
             print(f"[DEBUG] Found good snapshot: {r['timestamp']} for {r['original']}")
         return r, resp.content
-        
+
     # If we got here, no good snapshot found
     return None, None
 
 
 # ---------------- Fetchers ----------------
-def fetch_id(session: requests.Session, limiter: RateLimiter, ts: str, original: str, stream=False, timeout=30):
+def fetch_id(session: requests.Session, limiter: RateLimiter, ts: str, original: str, stream: bool = False, timeout: int = 30) -> requests.Response:
+    """Fetch a Wayback snapshot using the ``id_`` (raw) modifier.
+
+    Args:
+        session: Active HTTP session.
+        limiter: Rate limiter to throttle requests.
+        ts: 14-digit IA timestamp of the snapshot.
+        original: Original archived URL.
+        stream: Whether to stream the response body.
+        timeout: Request timeout in seconds.
+
+    Returns:
+        The HTTP response (may have a synthetic 504/500 status on error).
+    """
     limiter.take()
     try:
         return session.get(f"{WAYBACK_RAW}/{ts}id_/{original}", timeout=timeout, stream=stream)
@@ -496,7 +591,20 @@ def fetch_id(session: requests.Session, limiter: RateLimiter, ts: str, original:
         return resp
 
 
-def fetch_if(session: requests.Session, limiter: RateLimiter, ts: str, original: str, stream=False, timeout=30):
+def fetch_if(session: requests.Session, limiter: RateLimiter, ts: str, original: str, stream: bool = False, timeout: int = 30) -> requests.Response:
+    """Fetch a Wayback snapshot using the ``if_`` (iframe) modifier.
+
+    Args:
+        session: Active HTTP session.
+        limiter: Rate limiter to throttle requests.
+        ts: 14-digit IA timestamp of the snapshot.
+        original: Original archived URL.
+        stream: Whether to stream the response body.
+        timeout: Request timeout in seconds.
+
+    Returns:
+        The HTTP response (may have a synthetic 504/500 status on error).
+    """
     limiter.take()
     try:
         return session.get(f"{WAYBACK_RAW}/{ts}if_/{original}", timeout=timeout, stream=stream)
@@ -513,6 +621,17 @@ def fetch_if(session: requests.Session, limiter: RateLimiter, ts: str, original:
 
 
 def origin_ok(resp: requests.Response) -> bool:
+    """Return True if the archived origin server returned a 2xx status.
+
+    Checks the ``X-Archive-Orig-status`` header first; falls back to the
+    response's own status code when the header is absent.
+
+    Args:
+        resp: HTTP response from the Wayback Machine.
+
+    Returns:
+        True when the origin status is in the 200–299 range.
+    """
     s = resp.headers.get("X-Archive-Orig-status") or resp.headers.get("X-Archive-Orig-Status")
     try:
         code = int(str(s).split()[0]) if s else None
@@ -524,12 +643,35 @@ def origin_ok(resp: requests.Response) -> bool:
 
 
 def looks_html(resp: requests.Response) -> bool:
+    """Return True if the response Content-Type indicates HTML content.
+
+    Args:
+        resp: HTTP response to inspect.
+
+    Returns:
+        True when the content type starts with a known HTML prefix or contains
+        the substring ``html``.
+    """
     ctype = resp.headers.get("Content-Type", "").lower()
     return any(ctype.startswith(h) for h in HTMLISH_PREFIXES) or ("html" in ctype)
 
 
 # ---------------- Rewriting ----------------
 def rewrite_css_urls(css_bytes: bytes, base_url: str, root_host: str, out_css_dir: str) -> str:
+    """Rewrite url(...) references in CSS to relative local paths.
+
+    Third-party URLs are left unchanged; same-site URLs are rewritten relative
+    to out_css_dir.
+
+    Args:
+        css_bytes: Raw CSS file content.
+        base_url: Absolute URL of the CSS file (used to resolve relative refs).
+        root_host: Bare hostname used to identify same-site assets.
+        out_css_dir: Local directory path of the CSS file (for relpath calculation).
+
+    Returns:
+        Rewritten CSS as a string.
+    """
     try:
         css = css_bytes.decode("utf-8")
     except UnicodeDecodeError:
@@ -551,6 +693,22 @@ def rewrite_css_urls(css_bytes: bytes, base_url: str, root_host: str, out_css_di
 
 
 def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, banner_html=None, remove_all_scripts=False):
+    """Parse HTML, rewrite asset URLs to local relative paths, and collect assets.
+
+    Strips the Wayback toolbar, optionally removes script tags, rewrites
+    ``<a href>``, ``<img src>``, ``<link href>``, and inline ``style`` url()
+    references, and injects an optional banner at the top of ``<body>``.
+
+    Args:
+        html_bytes: Raw HTML content.
+        base_url: Absolute URL of the page (used to resolve relative refs).
+        root_host: Bare hostname used to identify same-site assets.
+        banner_html: Optional HTML string to inject at the top of ``<body>``.
+        remove_all_scripts: When True, all ``<script>`` tags are removed.
+
+    Returns:
+        Tuple of (rewritten HTML string, sorted list of absolute asset URLs).
+    """
     try:
         html = html_bytes.decode("utf-8")
     except UnicodeDecodeError:
@@ -637,7 +795,22 @@ def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, b
 
 
 # ---------------- Assets ----------------
-def download_asset(session: requests.Session, limiter: RateLimiter, ts: str, asset_url: str, outdir: str, timeout=30):
+def download_asset(session: requests.Session, limiter: RateLimiter, ts: str, asset_url: str, outdir: str, timeout: int = 30) -> tuple:
+    """Download a single asset from the Wayback Machine to the local mirror.
+
+    Tries the ``id_`` modifier first and falls back to ``if_`` on failure.
+
+    Args:
+        session: Active HTTP session.
+        limiter: Rate limiter to throttle requests.
+        ts: 14-digit IA timestamp of the snapshot.
+        asset_url: Absolute URL of the asset to download.
+        outdir: Root output directory for the mirror.
+        timeout: Request timeout in seconds.
+
+    Returns:
+        Tuple of (local_relative_path, success_bool, absolute_out_path, content_type).
+    """
     p = urlparse(asset_url)
     local = ensure_local_path(p.path)
     out_path = os.path.join(outdir, local)
@@ -657,8 +830,16 @@ def download_asset(session: requests.Session, limiter: RateLimiter, ts: str, ass
 
 
 # ---------------- Main ----------------
-def main():
+def main() -> int:
+    """Entry point: parse arguments, crawl the Wayback Machine, and write the mirror.
 
+    Enumerates archived URLs for the target domain up to the cutoff timestamp,
+    picks the best snapshot for each URL, downloads HTML and assets, rewrites
+    links to relative local paths, and writes manifest/report files.
+
+    Returns:
+        Exit code: 0 on success, 1 on general error, 2 on TLS error.
+    """
     ap = argparse.ArgumentParser(description="Build a static replica from the Wayback Machine.")
     ap.add_argument("domain", help="Root domain, e.g. digitalbuyingguide.org")
     ap.add_argument("--cutoff", default=None,
@@ -728,7 +909,7 @@ def main():
             subdomains=not args.no_subdomains,
             debug=args.debug_cdx or args.verbose
         )
-        
+
         # Then add results with lowercase if different
         if original_domain.lower() != original_domain:
             lowercase_rows = cdx_query_variants(
@@ -736,7 +917,7 @@ def main():
                 subdomains=not args.no_subdomains,
                 debug=args.debug_cdx or args.verbose
             )
-            
+
             # Merge and deduplicate
             seen = set((r.get("original"), r.get("timestamp")) for r in all_rows)
             for r in lowercase_rows:
@@ -744,13 +925,13 @@ def main():
                 if key not in seen:
                     all_rows.append(r)
                     seen.add(key)
-        
+
         if args.verbose:
             print(f"[VERBOSE] CDX query for domain: {root_host}, cutoff: {cutoff_ts}, subdomains: {not args.no_subdomains}")
             print(f"[VERBOSE] CDX returned {len(all_rows)} rows")
             for r in all_rows[:10]:
                 print(f"[VERBOSE] {r}")
-                
+
         # Export all found CDX rows if requested
         if args.export_cdx:
             try:
@@ -772,9 +953,9 @@ def main():
 
     # Pick latest per URL
     candidates = latest_per_original(
-        all_rows, 
-        cutoff_ts, 
-        path_prefix=args.path_prefix, 
+        all_rows,
+        cutoff_ts,
+        path_prefix=args.path_prefix,
         include_nonhtml=include_nonhtml,
         ignore_query_params=args.ignore_query_params  # Use our new option
     )
@@ -815,24 +996,24 @@ def main():
         # Find the best snapshot directly
         chosen, html_bytes = pick_best_snapshot(
             [url_info],  # Try the candidate we already have
-            session, 
-            limiter, 
+            session,
+            limiter,
             include_nonhtml=include_nonhtml,
             debug=args.debug_cdx or args.verbose,
             timeout=args.timeout
         )
-        
+
         # If no good snapshot from our candidate, try to find more from history
         if not chosen or not html_bytes:
             if not args.quiet or args.verbose:
                 print(f"[INFO] No good snapshot for {original}, checking history...")
-            
+
             # Get full history for this URL
             history = cdx_history_for_url(session, original, cutoff_ts)
-            
+
             if args.verbose:
                 print(f"[VERBOSE] Found {len(history)} historical snapshots for {original}")
-            
+
             chosen, html_bytes = pick_best_snapshot(
                 history,
                 session,
@@ -899,7 +1080,6 @@ def main():
                     print(f"  [WARN] CSS rewrite failed for {css_path}: {e}")
 
         # Rewrite all <link rel="stylesheet"> in the HTML to use the standard CSS name with correct relative path
-        from bs4 import BeautifulSoup
         soup = BeautifulSoup(html_str, "lxml")
         for link in soup.find_all("link", rel=lambda v: v and "stylesheet" in v):
             if link.get("href"):
@@ -950,7 +1130,7 @@ def main():
     # Post-processing: Verify all CSS references are correct
     if not args.quiet:
         print(f"[INFO] Running post-processing to ensure CSS works on all pages...")
-    
+
     # Make sure we have at least one CSS file
     if not css_copied and not os.path.exists(standard_css_abs):
         if not args.quiet:
@@ -962,19 +1142,19 @@ def main():
             for file in files:
                 if file.endswith('.html'):
                     html_files.append(os.path.join(root, file))
-                    
+
         fixed_css_refs = 0
         for html_file in html_files:
             try:
                 with open(html_file, 'r', encoding='utf-8', errors='replace') as f:
                     content = f.read()
-                
+
                 soup = BeautifulSoup(content, 'lxml')
                 needs_saving = False
-                
+
                 # Check if there are stylesheet links
                 css_links = soup.find_all("link", rel=lambda v: v and "stylesheet" in v)
-                
+
                 if not css_links:
                     # No stylesheet links, add one to the head
                     head = soup.head
@@ -985,7 +1165,7 @@ def main():
                         rel_path = os.path.relpath(standard_css_rel, html_dir)
                         # Normalize path separators for URLs
                         rel_path = rel_path.replace(os.path.sep, '/')
-                        
+
                         new_link = soup.new_tag("link", href=rel_path, rel="stylesheet", type="text/css")
                         head.append(new_link)
                         needs_saving = True
@@ -1000,7 +1180,7 @@ def main():
                             html_dir = os.path.dirname(rel_html_path)
                             css_path = os.path.normpath(os.path.join(html_dir, href))
                             css_abs_path = os.path.join(outdir, css_path)
-                            
+
                             # If the CSS doesn't exist, point to our standard CSS
                             if not os.path.exists(css_abs_path):
                                 # Calculate correct relative path to standard CSS
@@ -1009,7 +1189,7 @@ def main():
                                 link['href'] = rel_path
                                 needs_saving = True
                                 fixed_css_refs += 1
-                
+
                 # Save the file if changes were made
                 if needs_saving:
                     with open(html_file, 'w', encoding='utf-8') as f:
@@ -1017,7 +1197,7 @@ def main():
             except Exception as e:
                 if not args.quiet:
                     print(f"[WARN] Error fixing CSS in {html_file}: {e}")
-        
+
         if not args.quiet and fixed_css_refs > 0:
             print(f"[INFO] Fixed CSS references in {fixed_css_refs} HTML files")
 
