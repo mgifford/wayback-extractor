@@ -692,6 +692,16 @@ def rewrite_css_urls(css_bytes: bytes, base_url: str, root_host: str, out_css_di
     def repl(m) -> str:
         """Rewrite a single url(...) match to a relative local path."""
         raw = m.group(2).strip()
+        if raw.startswith(("data:", "#")):
+            return m.group(0)
+        absu = urljoin(base_url, raw)
+        if is_same_site(absu, root_host):
+            local = ensure_local_path(urlparse(absu).path)
+            rel = os.path.relpath(local, out_css_dir)
+            return f"url({rel})"
+        return f"url({raw})"
+
+    # Basic url(...) updates
     return CSS_URL_RE.sub(repl, css)
 
 
