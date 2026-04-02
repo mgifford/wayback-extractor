@@ -13,3 +13,13 @@ If you plan to add actual agent behaviors (workflow orchestration, background cr
 2. Allowed external actions (HTTP domains, file writes) and rate limits.
 3. How human oversight works (review steps, approval gates).
 4. How to reproduce and disable the agent cleanly.
+
+## Python Coding Standards
+
+When writing or reviewing Python code in this repository, follow the guidelines in [PYTHON_GUIDANCE.md](PYTHON_GUIDANCE.md). Key points:
+
+- Add docstrings to every function, class, and module.
+- Use type annotations on all function signatures.
+- Keep functions ≤ 50 lines; split larger ones into focused helpers.
+- Run `flake8` (or `ruff check`) before committing and fix all warnings.
+- Never leave trailing whitespace on blank lines.
