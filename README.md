@@ -24,7 +24,7 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
 ## Requirements
 
 - Python 3.8 or higher
-- Required Python packages (see `requirements.txt`):
+- Required Python packages (managed in `pyproject.toml`):
    - `requests`
    - `beautifulsoup4`
    - `lxml`
@@ -37,16 +37,18 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
    cd wayback-extractor
    ```
 
-2. (Recommended) Create and activate a virtual environment, then install dependencies from `requirements.txt`:
+2. Install [uv](https://docs.astral.sh/uv/) and sync the project environment:
+   ```bash
+   uv sync
+   ```
+
+   This creates a `.venv` and installs runtime + development dependencies from `pyproject.toml`.
+
+   If you prefer a manual pip workflow, `requirements.txt` is still available:
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
-   ```
-
-   If you prefer not to use a virtual environment, you can install directly:
-   ```bash
-   pip install requests beautifulsoup4 lxml
    ```
 
 3. Make the script executable:
@@ -59,7 +61,7 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
 Basic usage:
 
 ```bash
-python wayback_extractor.py example.org
+uv run python wayback_extractor.py example.org
 ```
 
 By default this mirrors example.org using today's date (e.g., 2026-01-20) and places the files in a directory named `example.org_YYYYMMDD`. The script automatically picks the newest non-404 snapshot when multiple snapshots exist for a URL, falling back to the newest 404 only if no non-404 snapshots are available.
@@ -67,7 +69,7 @@ By default this mirrors example.org using today's date (e.g., 2026-01-20) and pl
 ### Command Line Options
 
 ```
-python wayback_extractor.py [domain] [options]
+uv run python wayback_extractor.py [domain] [options]
 ```
 
 #### Required Arguments:
@@ -93,22 +95,22 @@ python wayback_extractor.py [domain] [options]
 
 Mirror example.org as of January 1, 2023:
 ```bash
-python wayback_extractor.py example.org --cutoff 2023-01-01
+uv run python wayback_extractor.py example.org --cutoff 2023-01-01
 ```
 
 Mirror only the English pages:
 ```bash
-python wayback_extractor.py example.org --path-prefix /en/
+uv run python wayback_extractor.py example.org --path-prefix /en/
 ```
 
 Mirror without JavaScript:
 ```bash
-python wayback_extractor.py example.org --strip-all-js
+uv run python wayback_extractor.py example.org --strip-all-js
 ```
 
 Mirror with a custom output directory:
 ```bash
-python wayback_extractor.py example.org --outdir my-mirror
+uv run python wayback_extractor.py example.org --outdir my-mirror
 ```
 
 ## Output
