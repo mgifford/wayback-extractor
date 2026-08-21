@@ -20,6 +20,7 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
 - Smart retries and rate limiting to be respectful to the Internet Archive
 - Progress tracking with URLs/min statistics
 - Prefers the freshest available non-404 Wayback snapshots, falling back gracefully if only 404s exist
+- Filters CDX results to the requested cutoff and successful statuses by default
 
 ## Requirements
 
@@ -82,6 +83,8 @@ uv run python wayback_extractor.py [domain] [options]
 - `--no-subdomains`: Do not include subdomains (default: include them)
 - `--strip-all-js`: Remove all JavaScript (default: keep same-domain JS)
 - `--no-nonhtml`: Do not include non-HTML files like PDFs (default: include them)
+- `--include-errors`: Include archived non-2xx/error captures (default: skip them)
+- `--history-fallback`: Query exact URL history when the selected capture fails (slower)
 - `--max N`: Maximum number of pages to process (0 = no limit)
 - `--path-prefix PATH`: Only include URLs whose path starts with this prefix (e.g., /en/)
 - `--rps N`: Requests per second (default: 0.5)
@@ -107,6 +110,14 @@ Mirror without JavaScript:
 ```bash
 uv run python wayback_extractor.py example.org --strip-all-js
 ```
+
+For a faster mirror of usable content, keep the default successful-status
+filter and leave `--history-fallback` disabled. A full domain mirror still
+needs one CDX enumeration of the URL set, but it no longer performs duplicate
+wildcard scans or exact history queries for every failed URL. Exact latest
+capture lookup is efficient when the original URL is already known; a
+whole-domain CDX query cannot return the latest capture for every URL in a
+single constant-size response.
 
 Mirror with a custom output directory:
 ```bash

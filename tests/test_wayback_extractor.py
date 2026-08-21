@@ -170,6 +170,24 @@ class TestEnsureLocalPath(unittest.TestCase):
         """Nested paths should have only the leading slash stripped."""
         self.assertEqual(we.ensure_local_path("/a/b/c.html"), "a/b/c.html")
 
+    def test_parent_traversal_is_normalized(self) -> None:
+        """Parent traversal segments must not escape the output directory."""
+        self.assertEqual(we.ensure_local_path("/../../outside.txt"), "outside.txt")
+
+    def test_file_parent_is_disambiguated(self) -> None:
+        """A file path may also safely contain a deeper URL path."""
+        self.assertEqual(
+            we.ensure_local_path("/index.php/18pt"),
+            "index.php__path/18pt",
+        )
+
+    def test_query_variants_get_distinct_paths(self) -> None:
+        """Query variants should not overwrite one another locally."""
+        first = we.local_path_for_url("https://example.com/api.php?action=one")
+        second = we.local_path_for_url("https://example.com/api.php?action=two")
+        self.assertNotEqual(first, second)
+        self.assertTrue(first.startswith("api__query-"))
+
 
 # ---------------------------------------------------------------------------
 # is_same_site
@@ -522,7 +540,9 @@ class TestLatestPerOriginal(unittest.TestCase):
             self._rec("http://example.com/gone", "20230101000000", status="404"),
             self._rec("http://example.com/gone", "20230201000000", status="404"),
         ]
-        result = we.latest_per_original(records, "20231231235959")
+        result = we.latest_per_original(
+            records, "20231231235959", include_errors=True
+        )
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["timestamp"], "20230201000000")
 

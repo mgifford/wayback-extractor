@@ -19,17 +19,20 @@ Python 3.8+ recommended.
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
+import posixpath
 import re
 import sys
 import time
 import threading
+import warnings
 from collections import deque
 from urllib.parse import urlparse, urljoin
 
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
@@ -154,7 +157,30 @@ def ensure_local_path(path: str) -> str:
     if not path or path.endswith("/"):
         path = (path or "/") + "index.html"
     path = path.split("?")[0].split("#")[0]
-    return path.lstrip("/")
+    normalized = posixpath.normpath(path).lstrip("/")
+    parts = normalized.split("/")
+    return "/".join(
+        f"{part}__path" if "." in part and index < len(parts) - 1 else part
+        for index, part in enumerate(parts)
+    )
+
+
+def local_path_for_url(url: str) -> str:
+    """Map an absolute URL to a collision-resistant local relative path.
+
+    Args:
+        url: Absolute URL whose path should be mapped.
+
+    Returns:
+        A safe local relative path, including a suffix for query variants.
+    """
+    parsed = urlparse(url)
+    local = ensure_local_path(parsed.path)
+    if parsed.query:
+        digest = hashlib.sha256(parsed.query.encode("utf-8")).hexdigest()[:8]
+        stem, extension = os.path.splitext(local)
+        local = f"{stem}__query-{digest}{extension}"
+    return local
 
 
 def is_same_site(url: str, root_host: str) -> bool:
@@ -314,17 +340,31 @@ def check_availability_api(session: requests.Session, domain: str, cutoff_ts: st
         return []
 
 
-def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, subdomains=True, debug=False):
-    """Enhanced CDX query with multiple strategies to maximize URL coverage.
-    IMPORTANT: First get ALL URLs (no date filter), then filter by date later."""
+def cdx_query_variants(
+    session: requests.Session,
+    domain: str,
+    cutoff_ts: str,
+    subdomains: bool = True,
+    debug: bool = False,
+    include_errors: bool = False,
+) -> list:
+    """Return one successful CDX capture per archived URL before cutoff.
+
+    CDX cannot efficiently return the latest capture for every URL in a
+    prefix query. This query therefore enumerates successful URL keys once;
+    the downloader validates each selected capture and can fall back to exact
+    URL history when needed.
+    """
 
     # Base params without date filter to get ALL archived URLs
     base_all_urls = {
         "output": "json",
         "fl": "timestamp,original,mimetype,statuscode,digest,length",
-        "collapse": "urlkey",  # Only one snapshot per URL
-        # No statuscode filter here; we'll pick best non-404 per URL later
+        "collapse": "urlkey",
+        "to": cutoff_ts,
     }
+    if not include_errors:
+        base_all_urls["filter"] = "statuscode:2.."
 
     # Generate domain variants
     domain_variants = set()
@@ -345,27 +385,20 @@ def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, s
     all_urls = []
     unique_originals = set()
 
-    # STEP 1: First find ALL URLs ever archived for this domain (no date filter)
+    # A domain/host query covers both the bare host and its URL paths. Avoid
+    # the previous wildcard pass, which duplicated most of the CDX work.
     if debug:
         print(f"[DEBUG] Searching for ALL archived URLs for {domain} variants: {domain_variants}")
 
     for d in domain_variants:
-        # Method 1: Wildcard search (domain*)
-        query_params = {**base_all_urls, "url": f"{d}*"}
-        if debug:
-            print(f"[DEBUG] Trying CDX query with: url={d}*")
-
-        results = _cdx(session, query_params)
-
-        # Track unique originals
+        exact_params = {**base_all_urls, "url": d, "matchType": "exact"}
+        results = _cdx(session, exact_params)
+        all_urls.extend(results)
         for r in results:
             url = r.get("original")
-            if url and url not in unique_originals:
+            if url:
                 unique_originals.add(url)
 
-        all_urls.extend(results)
-
-        # Method 2: Domain/* search with matchType
         if subdomains:
             query_params = {**base_all_urls, "url": f"{d}/*", "matchType": "domain"}
         else:
@@ -376,7 +409,6 @@ def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, s
 
         results = _cdx(session, query_params)
 
-        # Track unique originals
         for r in results:
             url = r.get("original")
             if url and url not in unique_originals:
@@ -392,15 +424,9 @@ def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, s
         if len(unique_originals) > 25:
             print(f"  ... and {len(unique_originals) - 25} more")
 
-    # STEP 2: Filter by cutoff date
-    filtered_by_date = [r for r in all_urls if r.get("timestamp", "") <= cutoff_ts]
-
-    if debug:
-        print(f"[DEBUG] After filtering by cutoff date {cutoff_ts}: {len(filtered_by_date)} snapshots")
-
-    # STEP 3: Get the latest snapshot for each URL
+    # Deduplicate rows returned by overlapping host variants.
     latest_per_url = {}
-    for r in filtered_by_date:
+    for r in all_urls:
         url = r.get("original", "")
         ts = r.get("timestamp", "")
         if not url or not ts:
@@ -412,7 +438,6 @@ def cdx_query_variants(session: requests.Session, domain: str, cutoff_ts: str, s
     if debug:
         print(f"[DEBUG] Latest snapshot per URL (≤ cutoff): {len(latest_per_url)} URLs")
 
-    # Convert to list
     uniq = list(latest_per_url.values())
 
     # Also try availability API as a fallback
@@ -448,7 +473,14 @@ def normalize_url(url: str, ignore_query_params: bool = False) -> str:
         return url
 
 
-def latest_per_original(records, cutoff_ts: str, path_prefix: str = None, include_nonhtml=False, ignore_query_params=False):
+def latest_per_original(
+    records,
+    cutoff_ts: str,
+    path_prefix: str = None,
+    include_nonhtml: bool = False,
+    ignore_query_params: bool = False,
+    include_errors: bool = False,
+) -> list:
     """Pick best record <= cutoff for each 'original', preferring latest non-404.
     If the newest snapshot is a 404 but an older non-404 exists, keep the older non-404.
     If only 404s exist, take the newest 404 so we still mirror something."""
@@ -484,13 +516,15 @@ def latest_per_original(records, cutoff_ts: str, path_prefix: str = None, includ
 
         # For HTML pages (main content), prefer text/html
         mime = r.get("mimetype", "").lower()
-        if not include_nonhtml and not (mime.startswith("text/html") or "html" in mime):
+        if not include_nonhtml and not is_html_mimetype(mime):
             # Only include HTML files unless include_nonhtml is set
             continue
 
         url_key = normalize_url(o, ignore_query_params) if ignore_query_params else o
         status = str(r.get("statuscode", ""))
         good = is_good(status)
+        if not include_errors and not good:
+            continue
 
         if url_key not in latest:
             latest[url_key] = {**r, "_good": good}
@@ -511,13 +545,19 @@ def latest_per_original(records, cutoff_ts: str, path_prefix: str = None, includ
     return list(latest.values())
 
 
-def cdx_history_for_url(session: requests.Session, url: str, cutoff_ts: str) -> list:
-    """Return all CDX records for *url* up to and including *cutoff_ts*.
+def cdx_history_for_url(
+    session: requests.Session,
+    url: str,
+    cutoff_ts: str,
+    include_errors: bool = False,
+) -> list:
+    """Return recent CDX records for *url* up to and including *cutoff_ts*.
 
     Args:
         session: Authenticated requests session.
         url: Exact original URL to query.
         cutoff_ts: Upper-bound IA timestamp (YYYYMMDDhhmmss).
+        include_errors: Whether error captures should be returned.
 
     Returns:
         List of CDX record dicts, each with keys like timestamp, original,
@@ -528,8 +568,12 @@ def cdx_history_for_url(session: requests.Session, url: str, cutoff_ts: str) -> 
         "output": "json",
         "gzip": "false",
         "to": cutoff_ts,
+        "fastLatest": "true",
+        "limit": "-1",
         "fl": "timestamp,original,mimetype,statuscode,digest,length",
     }
+    if not include_errors:
+        base["filter"] = "statuscode:2.."
     return _cdx(session, base)
 
 
@@ -668,6 +712,14 @@ def looks_html(resp: requests.Response) -> bool:
     return any(ctype.startswith(h) for h in HTMLISH_PREFIXES) or ("html" in ctype)
 
 
+def is_html_mimetype(mimetype: str) -> bool:
+    """Return whether a CDX MIME type identifies an HTML document."""
+    ctype = mimetype.lower()
+    return any(ctype.startswith(prefix) for prefix in HTMLISH_PREFIXES) or (
+        "html" in ctype
+    )
+
+
 # ---------------- Rewriting ----------------
 def rewrite_css_urls(css_bytes: bytes, base_url: str, root_host: str, out_css_dir: str) -> str:
     """Rewrite url(...) references in CSS to relative local paths.
@@ -696,7 +748,7 @@ def rewrite_css_urls(css_bytes: bytes, base_url: str, root_host: str, out_css_di
             return m.group(0)
         absu = urljoin(base_url, raw)
         if is_same_site(absu, root_host):
-            local = ensure_local_path(urlparse(absu).path)
+            local = local_path_for_url(absu)
             rel = os.path.relpath(local, out_css_dir)
             return f"url({rel})"
         return f"url({raw})"
@@ -727,7 +779,9 @@ def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, b
     except UnicodeDecodeError:
         html = html_bytes.decode("latin-1", errors="replace")
 
-    soup = BeautifulSoup(html, "lxml")
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+        soup = BeautifulSoup(html, "lxml")
 
     # Inject banner if provided
     if banner_html:
@@ -767,8 +821,8 @@ def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, b
                 continue
             absu = urljoin(base_url, v)
             if is_same_site(absu, root_host):
-                local = ensure_local_path(urlparse(absu).path)
-                current = ensure_local_path(urlparse(base_url).path)
+                local = local_path_for_url(absu)
+                current = local_path_for_url(base_url)
                 el[attr] = os.path.relpath(local, os.path.dirname(current) or ".")
                 if collect:
                     assets.add(absu)
@@ -784,8 +838,8 @@ def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, b
                 continue
             absu = urljoin(base_url, href)
             if is_same_site(absu, root_host):
-                local = ensure_local_path(urlparse(absu).path)
-                current = ensure_local_path(urlparse(base_url).path)
+                local = local_path_for_url(absu)
+                current = local_path_for_url(base_url)
                 el["href"] = os.path.relpath(local, os.path.dirname(current) or ".")
                 assets.add(absu)
 
@@ -798,8 +852,8 @@ def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, b
             inside = m.group(2).strip()
             absu = urljoin(base_url, inside)
             if is_same_site(absu, root_host):
-                local = ensure_local_path(urlparse(absu).path)
-                current = ensure_local_path(urlparse(base_url).path)
+                local = local_path_for_url(absu)
+                current = local_path_for_url(base_url)
                 rel = os.path.relpath(local, os.path.dirname(current) or ".")
                 return f"url({rel})"
             return m.group(0)
@@ -827,7 +881,7 @@ def download_asset(session: requests.Session, limiter: RateLimiter, ts: str, ass
         Tuple of (local_relative_path, success_bool, absolute_out_path, content_type).
     """
     p = urlparse(asset_url)
-    local = ensure_local_path(p.path)
+    local = local_path_for_url(asset_url)
     out_path = os.path.join(outdir, local)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
@@ -869,6 +923,10 @@ def main() -> int:
                     help="Remove all <script> tags, not just third-party.")
     ap.add_argument("--no-nonhtml", action="store_true",
                     help="Do NOT include non-HTML originals as pages (default: include them, e.g. PDFs).")
+    ap.add_argument("--include-errors", action="store_true",
+                    help="Include archived non-2xx/error captures (default: skip them).")
+    ap.add_argument("--history-fallback", action="store_true",
+                    help="Query exact URL history when the selected capture fails (slower).")
     ap.add_argument("--max", type=int, default=0,
                     help="Max pages to process (0 = no limit).")
     ap.add_argument("--path-prefix", default=None,
@@ -922,7 +980,8 @@ def main() -> int:
         all_rows = cdx_query_variants(
             session, original_domain, cutoff_ts,
             subdomains=not args.no_subdomains,
-            debug=args.debug_cdx or args.verbose
+            debug=args.debug_cdx or args.verbose,
+            include_errors=args.include_errors,
         )
 
         # Then add results with lowercase if different
@@ -930,7 +989,8 @@ def main() -> int:
             lowercase_rows = cdx_query_variants(
                 session, original_domain.lower(), cutoff_ts,
                 subdomains=not args.no_subdomains,
-                debug=args.debug_cdx or args.verbose
+                debug=args.debug_cdx or args.verbose,
+                include_errors=args.include_errors,
             )
 
             # Merge and deduplicate
@@ -972,7 +1032,8 @@ def main() -> int:
         cutoff_ts,
         path_prefix=args.path_prefix,
         include_nonhtml=include_nonhtml,
-        ignore_query_params=args.ignore_query_params  # Use our new option
+        ignore_query_params=args.ignore_query_params,
+        include_errors=args.include_errors,
     )
 
     if not args.quiet:
@@ -1019,12 +1080,17 @@ def main() -> int:
         )
 
         # If no good snapshot from our candidate, try to find more from history
-        if not chosen or not html_bytes:
+        if (not chosen or not html_bytes) and args.history_fallback:
             if not args.quiet or args.verbose:
                 print(f"[INFO] No good snapshot for {original}, checking history...")
 
             # Get full history for this URL
-            history = cdx_history_for_url(session, original, cutoff_ts)
+            history = cdx_history_for_url(
+                session,
+                original,
+                cutoff_ts,
+                include_errors=args.include_errors,
+            )
 
             if args.verbose:
                 print(f"[VERBOSE] Found {len(history)} historical snapshots for {original}")
@@ -1049,9 +1115,30 @@ def main() -> int:
 
         # Write HTML after rewriting and collect assets
         p = urlparse(chosen["original"])
-        local_html_rel = ensure_local_path(p.path)
+        local_html_rel = local_path_for_url(chosen["original"])
         local_html_path = os.path.join(outdir, local_html_rel)
         os.makedirs(os.path.dirname(local_html_path), exist_ok=True)
+
+        if not is_html_mimetype(chosen.get("mimetype", "")):
+            with open(local_html_path, "wb") as output_file:
+                output_file.write(html_bytes)
+            manifest["pages"].append({
+                "original": chosen["original"],
+                "timestamp": chosen["timestamp"],
+                "local": local_html_rel,
+                "assets": [],
+                "fallbacks": 0,
+            })
+            report_rows.append({
+                "original": original,
+                "timestamp": chosen["timestamp"],
+                "status": "ok",
+                "reason": "",
+                "assets": 0,
+                "fallbacks": 0,
+            })
+            processed += 1
+            continue
 
         base_url = f"{p.scheme or 'http'}://{p.netloc}{p.path if p.path else '/'}"
         html_str, assets = rewrite_html_and_collect(
