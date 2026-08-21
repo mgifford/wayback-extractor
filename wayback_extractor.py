@@ -347,6 +347,7 @@ def cdx_query_variants(
     subdomains: bool = True,
     debug: bool = False,
     include_errors: bool = False,
+    exclude_patterns: list[str] | None = None,
 ) -> list:
     """Return one successful CDX capture per archived URL before cutoff.
 
@@ -363,8 +364,13 @@ def cdx_query_variants(
         "collapse": "urlkey",
         "to": cutoff_ts,
     }
+    filters = []
     if not include_errors:
-        base_all_urls["filter"] = "statuscode:2.."
+        filters.append("statuscode:2..")
+    for pattern in exclude_patterns or []:
+        filters.append(f"!original:{pattern}")
+    if filters:
+        base_all_urls["filter"] = filters
 
     # Generate domain variants
     domain_variants = set()
@@ -473,6 +479,15 @@ def normalize_url(url: str, ignore_query_params: bool = False) -> str:
         return url
 
 
+def url_matches_exclusion(url: str, patterns: list[str]) -> bool:
+    """Return whether a URL matches one of the configured exclusion regexes.
+
+    Patterns are matched against the complete absolute URL, so callers can
+    exclude a path, a query parameter, or a particular host.
+    """
+    return any(re.search(pattern, url, re.IGNORECASE) for pattern in patterns)
+
+
 def latest_per_original(
     records,
     cutoff_ts: str,
@@ -480,6 +495,7 @@ def latest_per_original(
     include_nonhtml: bool = False,
     ignore_query_params: bool = False,
     include_errors: bool = False,
+    exclude_patterns: list[str] | None = None,
 ) -> list:
     """Pick best record <= cutoff for each 'original', preferring latest non-404.
     If the newest snapshot is a 404 but an older non-404 exists, keep the older non-404.
@@ -496,6 +512,8 @@ def latest_per_original(
     for r in records:
         o = r.get("original", "")
         if not o:
+            continue
+        if exclude_patterns and url_matches_exclusion(o, exclude_patterns):
             continue
 
         ts = r.get("timestamp", "")
@@ -927,6 +945,11 @@ def main() -> int:
                     help="Include archived non-2xx/error captures (default: skip them).")
     ap.add_argument("--history-fallback", action="store_true",
                     help="Query exact URL history when the selected capture fails (slower).")
+    ap.add_argument("--include-api", action="store_true",
+                    help="Include /api.php URLs (excluded by default).")
+    ap.add_argument("--exclude-url", action="append", default=[],
+                    metavar="REGEX",
+                    help="Exclude URLs matching REGEX; may be repeated.")
     ap.add_argument("--max", type=int, default=0,
                     help="Max pages to process (0 = no limit).")
     ap.add_argument("--path-prefix", default=None,
@@ -965,6 +988,9 @@ def main() -> int:
 
     # By default, include non-HTML originals unless --no-nonhtml is specified
     include_nonhtml = not args.no_nonhtml
+    exclude_patterns = list(args.exclude_url)
+    if not args.include_api:
+        exclude_patterns.insert(0, r"/api\.php(?:\?|$)")
 
     limiter = RateLimiter(rps=args.rps, burst=args.burst)
     session = make_session()
@@ -982,6 +1008,7 @@ def main() -> int:
             subdomains=not args.no_subdomains,
             debug=args.debug_cdx or args.verbose,
             include_errors=args.include_errors,
+            exclude_patterns=exclude_patterns,
         )
 
         # Then add results with lowercase if different
@@ -991,6 +1018,7 @@ def main() -> int:
                 subdomains=not args.no_subdomains,
                 debug=args.debug_cdx or args.verbose,
                 include_errors=args.include_errors,
+                exclude_patterns=exclude_patterns,
             )
 
             # Merge and deduplicate
@@ -1034,7 +1062,12 @@ def main() -> int:
         include_nonhtml=include_nonhtml,
         ignore_query_params=args.ignore_query_params,
         include_errors=args.include_errors,
+        exclude_patterns=exclude_patterns,
     )
+
+    excluded_count = len(all_rows) - len(candidates)
+    if excluded_count and not args.quiet:
+        print(f"[INFO] Excluded {excluded_count} URLs by status, type, or URL filter")
 
     if not args.quiet:
         print(f"[INFO] Candidates: {len(candidates)} (after dedupe, ≤ cutoff)")

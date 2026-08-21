@@ -253,6 +253,43 @@ class TestNormalizeUrl(unittest.TestCase):
         self.assertEqual(we.normalize_url(url, ignore_query_params=True), url)
 
 
+class TestUrlExclusions(unittest.TestCase):
+    """Tests for configurable candidate URL exclusions."""
+
+    def test_api_endpoint_with_query_is_excluded(self) -> None:
+        """The default API pattern should match query-backed API URLs."""
+        self.assertTrue(
+            we.url_matches_exclusion(
+                "https://example.com/api.php?action=query",
+                [r"/api\.php(?:\?|$)"],
+            )
+        )
+
+    def test_similar_path_is_not_excluded(self) -> None:
+        """The API pattern should not match a similarly named path."""
+        self.assertFalse(
+            we.url_matches_exclusion(
+                "https://example.com/api.phpx",
+                [r"/api\.php(?:\?|$)"],
+            )
+        )
+
+    def test_custom_exclusion_is_applied(self) -> None:
+        """Custom patterns should remove matching candidate records."""
+        record = {
+            "original": "https://example.com/private/page",
+            "timestamp": "20230101000000",
+            "statuscode": "200",
+            "mimetype": "text/html",
+        }
+        result = we.latest_per_original(
+            [record],
+            "20231231235959",
+            exclude_patterns=[r"/private/"],
+        )
+        self.assertEqual(result, [])
+
+
 # ---------------------------------------------------------------------------
 # RateLimiter
 # ---------------------------------------------------------------------------

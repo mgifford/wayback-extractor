@@ -85,6 +85,8 @@ uv run python wayback_extractor.py [domain] [options]
 - `--no-nonhtml`: Do not include non-HTML files like PDFs (default: include them)
 - `--include-errors`: Include archived non-2xx/error captures (default: skip them)
 - `--history-fallback`: Query exact URL history when the selected capture fails (slower)
+- `--include-api`: Include `/api.php` endpoints (excluded by default)
+- `--exclude-url REGEX`: Exclude matching URLs; may be repeated
 - `--max N`: Maximum number of pages to process (0 = no limit)
 - `--path-prefix PATH`: Only include URLs whose path starts with this prefix (e.g., /en/)
 - `--rps N`: Requests per second (default: 0.5)
@@ -104,6 +106,15 @@ uv run python wayback_extractor.py example.org --cutoff 2023-01-01
 Mirror only the English pages:
 ```bash
 uv run python wayback_extractor.py example.org --path-prefix /en/
+```
+
+API and background endpoints are excluded by default. Add `--include-api` to
+mirror them, or add custom exclusions such as:
+
+```bash
+uv run python wayback_extractor.py labs.levelaccess.com \
+   --exclude-url '/index\.php/.*' \
+   --exclude-url '/Special:'
 ```
 
 Mirror without JavaScript:
