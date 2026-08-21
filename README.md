@@ -33,7 +33,7 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
 
 1. Clone this repository or download the script:
    ```bash
-   git clone https://github.com/your-username/wayback-extractor.git
+   git clone https://github.com/mgifford/wayback-extractor.git
    cd wayback-extractor
    ```
 
