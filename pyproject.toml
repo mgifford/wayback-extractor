@@ -7,7 +7,6 @@ requires-python = ">=3.8"
 dependencies = [
   "requests",
   "beautifulsoup4",
-  "lxml",
 ]
 
 [dependency-groups]

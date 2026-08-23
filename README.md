@@ -28,7 +28,7 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
 - Required Python packages (managed in `pyproject.toml`):
    - `requests`
    - `beautifulsoup4`
-   - `lxml`
+   - no external HTML parser is required
 
 ## Installation
 

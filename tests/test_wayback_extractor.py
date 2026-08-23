@@ -7,6 +7,7 @@ runs entirely offline.
 """
 
 import json
+import sys
 import threading
 import unittest
 from typing import Any
@@ -770,6 +771,18 @@ class TestRewriteHtmlAndCollect(unittest.TestCase):
             raw, self._BASE_URL, self._ROOT_HOST
         )
         self.assertIsInstance(html_str, str)
+
+    def test_lxml_not_required_at_runtime(self) -> None:
+        """HTML rewriting should still work when lxml is unavailable."""
+        html = (
+            '<html><body>'
+            '<img src="http://example.com/images/photo.jpg">'
+            '</body></html>'
+        )
+        with patch.dict(sys.modules, {"lxml": None}):
+            html_str, assets = self._rewrite(html)
+        self.assertIn("photo.jpg", html_str)
+        self.assertTrue(any("photo.jpg" in a for a in assets))
 
     def test_assets_list_is_sorted(self) -> None:
         """Returned assets list should be sorted."""

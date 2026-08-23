@@ -27,12 +27,11 @@ import re
 import sys
 import time
 import threading
-import warnings
 from collections import deque
 from urllib.parse import urlparse, urljoin
 
 import requests
-from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
+from bs4 import BeautifulSoup
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
@@ -40,10 +39,20 @@ CDX = "https://web.archive.org/cdx/search/cdx"
 CDX_ALTERNATE = "https://web.archive.org/cdx/search"
 WAYBACK_AVAILABILITY = "https://archive.org/wayback/available"
 WAYBACK_RAW = "https://web.archive.org/web"
+HTML_PARSER = "html.parser"
 
 UA = "WaybackStaticMirror/1.4 (+https://github.com/your-org/wayback-static-mirror)"
 HTMLISH_PREFIXES = ("text/html", "application/xhtml+xml")
 CSS_URL_RE = re.compile(r"""url\(\s*(['"]?)([^'")]+)\1\s*\)""", re.IGNORECASE)
+
+
+def parse_html(html: str) -> BeautifulSoup:
+    """Parse HTML using the built-in parser backend.
+
+    This keeps the script runnable without optional third-party parser
+    libraries such as lxml.
+    """
+    return BeautifulSoup(html, HTML_PARSER)
 
 
 # ---------------- Rate limiter ----------------
@@ -797,19 +806,17 @@ def rewrite_html_and_collect(html_bytes: bytes, base_url: str, root_host: str, b
     except UnicodeDecodeError:
         html = html_bytes.decode("latin-1", errors="replace")
 
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
-        soup = BeautifulSoup(html, "lxml")
+    soup = parse_html(html)
 
     # Inject banner if provided
     if banner_html:
         body = soup.body
         if body:
             # Insert as first element in body
-            body.insert(0, BeautifulSoup(banner_html, "lxml"))
+            body.insert(0, parse_html(banner_html))
         else:
             # Fallback: insert at top of html
-            soup.insert(0, BeautifulSoup(banner_html, "lxml"))
+            soup.insert(0, parse_html(banner_html))
     assets = set()
 
     # Remove Wayback toolbar if present
@@ -1215,7 +1222,7 @@ def main() -> int:
                     print(f"  [WARN] CSS rewrite failed for {css_path}: {e}")
 
         # Rewrite all <link rel="stylesheet"> in the HTML to use the standard CSS name with correct relative path
-        soup = BeautifulSoup(html_str, "lxml")
+        soup = parse_html(html_str)
         for link in soup.find_all("link", rel=lambda v: v and "stylesheet" in v):
             if link.get("href"):
                 # Calculate proper relative path from this HTML file to the standard CSS
@@ -1284,7 +1291,7 @@ def main() -> int:
                 with open(html_file, 'r', encoding='utf-8', errors='replace') as f:
                     content = f.read()
 
-                soup = BeautifulSoup(content, 'lxml')
+                soup = parse_html(content)
                 needs_saving = False
 
                 # Check if there are stylesheet links
