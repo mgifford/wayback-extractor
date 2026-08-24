@@ -11,7 +11,7 @@ tracking record. Keep it updated in the same PR as dependency changes.
 | Repository license | AGPL-3.0-or-later |
 | SBOM format | Markdown inventory (human-maintained) |
 | Primary version source | `uv.lock` |
-| Last reviewed (UTC) | 2026-08-23 |
+| Last reviewed (UTC) | 2026-08-24 |
 
 ## Component inventory
 

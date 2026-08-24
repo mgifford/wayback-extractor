@@ -24,7 +24,7 @@ https://www.waybackmachinedownloader.com/en/wayback-and-archive-downloader-prici
 
 ## Requirements
 
-- Python 3.8 or higher
+- Python 3.10 or higher
 - Required Python packages (managed in `pyproject.toml`):
    - `requests`
    - `beautifulsoup4`

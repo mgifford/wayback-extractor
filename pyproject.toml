@@ -3,7 +3,7 @@ name = "wayback-extractor"
 version = "0.1.0"
 description = "Mirror Wayback Machine snapshots into static local copies"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 dependencies = [
   "requests",
   "beautifulsoup4",

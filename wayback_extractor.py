@@ -14,7 +14,7 @@ Features
 - Reports: manifest.json, report.csv, report.md
 - Debug flag to inspect CDX rows
 
-Python 3.8+ recommended.
+Python 3.10+ recommended.
 """
 
 import argparse
